@@ -20,8 +20,8 @@
 %----------------------------------------------------------------------------------------------------------
 
 \title{Projet Lévitation}
-\author{Simon Hamery, Flavien Le Bailly, Thomas Gastineau}
 \date{Année universitaire :  2014-2015}
+\author{Simon Hamery, Flavien Le Bailly, Thomas Gastineau}
  
 
 
@@ -56,301 +56,25 @@ Nous remercions ...
 \addcontentsline{toc}{chapter}{Introduction} %Ce chapitre n'est pas numéroté mais apparaitra dans la table des matières gràce à cette commande.
 \pagenumbering{arabic} \setcounter{page}{1} %Le numéro de page est remis à zéro et la numérotation est en chiffre arabe
 
- LaTeX  est un langage de programmation qui permet de rédiger des documents.  Contrairement aux logiciels Word ou OpenOffice, un document sous LaTeX est programmé puis compilé : on ne connait le résultat final qu'une fois l'étape de compilation réussie. Les premiers pas sous LaTeX  peuvent paraître laborieux mais l'investissement initial en vaut grandement la peine. 
+
  
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Avant d'utiliser \LaTeX}
+\chapter{Principe}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Installer \LaTeX}
-Installer LaTeX nécessite deux étapes :
-\begin{enumerate}
-\item installer une distribution LaTeX (packages et compilateur),
-\item installer un éditeur de texte.
-\end{enumerate}
-La première étape dépend du système d'exploitation. Concernant la deuxième étape, n'importe quel éditeur de texte est \textit{a priori} utilisable, mais je vous conseille d'utiliser Texmaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}}  qui est multi-plateforme : Linux, Mac OS, Windows.
+\chapter{Expériences}
 
-\subsection{Installer LaTeX sur Windows}
-Sur windows, il existe une distribution adaptée  : MikTex\footnote{\url{http://miktex.org}}. Dans l'onglet Download, sélectionner "Complete MikTex system". Le téléchargement peut-être long ($\approx$900 Mo), mais vous serez tranquille par la suite. La procédure est expliquée en détail dans le livre de N.-A. MAQUIS.\cite{maq}\\
+\section{Mise en place d'un champs d'ondes stationnaires}
 
-\subsection{Installer LaTeX sur Mac OS}
-Sur Mac OS, le processus consiste à télécharger et installer le package MacTeX.pkg.\footnote{\url{http://www.tug.org/mactex/}} Attention à la taille du paquet ($\approx 2.1$ Go) !
-Cette distribution contient également un éditeur (TexShop) mais vous pouvez également utiliser Texmaker.
+\subsection{Protocole}
 
-\subsection{Installer LaTeX sur Linux}
-Sur Linux, allez dans le gestionnaire de paquets et installez le paquet texlive-full. 
+\subsection{Résultats}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Configurer/utiliser Texmaker}
-\subsection{Gestion de l'encodage}
-L'encodage des caractères peut parfois poser problème. Cela peut se manifester par des accents étranges : un é peut devenir un Ã©. Pour limiter ce problème, nous allons choisir le système d'encodage le plus répandu (quoique ...). Pour cela, il faut aller dans les préférences du logiciel puis dans l'onglet "éditeur". Choisir l'encodage UTF-8.
-\subsection{Compiler un document}
-Texmaker permet en une seule action de compiler et de visualiser le fichier pdf créé par la compilation. Pour cela, il faut aller dans les préférences du logiciel puis dans l'onglet "Compil rapide". Choisir "PdfLatex + view pdf". La compilation s'effectue dans la barre des raccourcis de la fenêtre principale en appuyant sur la flèche bleue à gauche de la case "Compilation rapide".
-   
+\subsection{Conclusion}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Structure d'un document \LaTeX}
+\section{Essai de lévitation dans un tube}
 
-Un document .tex comporte un préambule où sont définis le style de document, la mise en page, etc ... Le préambule commence toujours par une commande de type :
-\begin{verbatim}
-\documentclass[a4paper,11pt]{report}  
-\end{verbatim}
- qui permet de définir la classe du document (ici un rapport) et des informations générales (taille de la police, format de la feuille).
-
-Ensuite, les packages à utiliser sont déclarés avec des commandes de type :
-\begin{verbatim}
-\usepackage[T1]{fontenc}
-\end{verbatim}
-
-Les différents packages utilisés dans monprojet.tex sont commentés dans le fichier tex. Viennent ensuite les commandes pour la page de garde (voir l'Annexe \ref{garde}).
-
-Ces précédentes commandes forment le préambule. La rédaction du document peut alors commencer. La rédaction doit se placer entre les deux commandes suivantes :
-
-\begin{verbatim}
-\begin{document}
-
-\end{document}
-\end{verbatim}
-   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Utiliser \LaTeX}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Insérer des formules mathématiques}
-Il y a plusieurs moyen d'insérer des équations dans LaTeX. On peut utiliser l'environnement \textsc{equation} comme ceci : 
-
-\begin{equation}
-s_{eff}=\sqrt{\frac{1}{\tau}\int_0^\tau s(t)^2dt}
-\label{seff}
-\end{equation}
-
-L'équation \ref{seff} est numérotée et centrée. Pour un système d'équations, on peut utiliser l'environnement \textsc{eqnarray} :
-
-\begin{eqnarray}
- y &=& x - y + z\\
- x &=& y\\
- z &=& y
- \label{eq2}
- \end{eqnarray} 
-
- ou l'environnement \textsc{align} : 
-
-\begin{align*}
- y &=& x - y + z\\
- x &=& y\\
- z &=& y
- \end{align*}
- Les étoiles * insérées dans l'environnement permettent à l'équation ou au système d'équations de ne pas être numérotées.
- On peut également vouloir insérer des symboles mathématiques au sein d'une phrase comme $e^{i\pi}=-1$. Pour cela, il faut encadrer la formules par des \$.
- 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Insérer des tableaux}
-Les tableaux s'insèrent grâce à la commande \textsc{tabular}. 
-
-\begin{table}[!h]
-\centering
-\begin{tabular}{c c}
-toto & tata  
-\end{tabular}
-\label{tab_toto}
-\caption{Un premier tableau}
-\end{table} 
-
-\begin{table}[!h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-toto & tata\\
-\hline  
-\end{tabular}
-\label{tab_titi}
-\caption{Un deuxième tableau}
-\end{table} 
-
-\begin{table}[!h]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline toto & tata & titi \\ 
-\hline $V$ & $t$ & $mV$ \\ 
-\hline 
-\end{tabular}
-\label{tab_tata}
-\caption{Un vrai beau tableau}
-\end{table} 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Insérer des figures}
-
-\LaTeX{} sait évidemment gérer tous les formats d'images. Cependant, comme nous avons choisi de compiler à l'aide de la commande PDFLaTeX, les formats à utiliser sont les suivants : jpg, png, tiff, pdf. Vous ne pourrez pas utiliser les formats eps et ps. Les figures s'introduisent à l'aide de l'environnement ... \textsc{figure}.
-
-\begin{figure}[!H]
-\centering
-\includegraphics[width=0.5\textwidth]{ane} \hfill
-\caption{\label{donkey}Une première figure à inclure}
-\end{figure}
-
-La figure \ref{donkey} est centrée, numérotée et possède une légende. On peut également placer deux figures à côté l'une de l'autre et n'avoir qu'une légende pour les deux figures en adoptant l'environnement \textsc{tabular}
-
-\begin{figure}[h]
-\centering
-\begin{tabular}{cc}
- \includegraphics[width=6cm]{sinus} & \includegraphics[width=6cm]{spect_sinus}\\
-\end{tabular}
-\caption{Deux figures et une unique légende}\label{sin}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Les références et les citations}
-\LaTeX{} dispose d'un système complet de références et de citations. Si vous souhaitez, dans le corps du texte, faire référence à une équation, une figure ou un tableau, vous devez placer un marqueur dans l'environnement visé avec la commande \verb=\label{nomdumarqueur}=. L'appel se fait avec la commande \verb=\ref{nomdumarqueur}=. Par exemple, la figure \ref{sin} est plus drôle que l'équation \ref{seff}.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Conclusion}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\addcontentsline{toc}{chapter}{Conclusion} %permet d'inclure le chapitre conclusion dans la table des matières
-Latex, c'est super.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix 
-\chapter{La page de garde}
-\label{garde}
-La page de garde du présent document est un peu minimaliste. Dans le préambule, vous pouvez remplacer les lignes suivantes :
-\begin{verbatim}
-\title{Mon premier projet avec \LaTeX}
-\author{John Doe, Jane Doe \& Tim Doe}
-\date{Année universitaire :  2012-2013}
-\end{verbatim}
-par :
-\begin{verbatim}
-\makeatletter
-\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
-\def\2title#1{\def\@2title{#1}}
-\def\classe#1{\def\@classe{#1}}
-\def\fac#1{\def\@fac{#1}}
-\def\docu#1{\def\@docu{#1}}
-\def\encadrant#1{\def\@encadrant{#1}}
-
-\renewcommand{\maketitle}{\begin{titlepage}%
-    \let\footnotesize\small
-    \let\footnoterule\relax
-    \parindent \z@
-    \reset@font
-    \null
-    
-    
-    \vskip 0\p@ % écart année - image
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.3\textwidth]{univ.jpg} \hfill
-\end{figure}
-
-    \begin{center}
-     \LARGE{ \@docu} \par
-\end{center}
-    \vskip 30 pt     
-    \vskip 30\p@ %50 écart haut page - titre
-    \begin{center}
-      \hrule
-      \vskip 1pt 
-      \hrule
-      \vskip 1pt
-      {\huge \bfseries \strut \@title \strut}\par
- 
-      \vskip 1pt
-      \hrule
-      \vskip 1pt
-      \hrule
-    \end{center}
-  
-    \vskip 50\p@ %50  écart titre - auteur
-    \begin{center}
-      \Large \@author \par
-    \end{center}
-  
-  \vskip 50\p@ %50 écart auteur - classe
-    \begin{center}
-      \Large \@classe \par
-    \end{center}
-
- \vskip 0\p@ % 320 écart classe - année
-    \begin{center}
-      \Large \@date \par
-    \end{center}
- 
- \vskip 100\p@ % écart année - prof
-    \begin{center}
-\large
-		Projet réalisé sous la direction de \\
-      \large \@encadrant \par
-    \end{center}
-    
-    \vfil
-    \null
-  \end{titlepage}%
-  \setcounter{footnote}{0}%
-}
-
-\makeatother
-\author{\textsc{John Doe, Jane Doe \& James Doe}}
-
-\title{Mon premier projet avec \LaTeX}
-
-\date{Année universitaire : 2012 - 2013}
-\classe{Licence 2 Sciences Pour l'Ingénieur}
-\fac{Université du Maine, Le Mans}
-\docu{\textsc{Rapport de Projet Universitaire}}
-
-\encadrant{
-	\begin{tabular}{l p{1.8cm}lll}
-		M.	& \textsc{Bertrand} & \textsc{Lihoreau, } 	& Maitre de Conférence & LAUM
-	\end{tabular}
-}
-\end{verbatim}}
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%bibliography
-\renewcommand{\bibname}{Références} 
-\begin{thebibliography}{2}
-\section*{Bibliographie}
-  % \bibitem[label]{cle} Auteur, TITRE, editeur, annee
-   \bibitem{lam1} L. LAMPORT, {\it \LaTeX : A Document
-   preparation system, Addison-Wesley, 1994}
-  \bibitem{chev} C. CHEVALIER, {\it \LaTeX{} pour l'impatient , H\&K, 2009} 
-  \bibitem{maq} N.-A. MAQUIS, {\it Rédigez des documents de qualité avec \LaTeX , Livre du zéro, 2010} 
-\section*{Webographie}
-\bibitem{grappa} \url{http://www.grappa.univ-lille3.fr/FAQ-LaTeX/}
-\bibitem{wiki} \url{http://fr.wikipedia.org/wiki/LaTeX}
-\bibitem{symbol} \url{http://amath.colorado.edu/documentation/LaTeX/Symbols.pdf}
-\end{thebibliography}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\null
-\thispagestyle{empty}
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\thispagestyle{empty}
-\textbf{Résumé :}\\
-
-
-Ce document permet de rédiger un premier document en \LaTeX
-\\
-\textit{\textbf{Mots clés :} \LaTeX, beau document.}\\
-
-
-\textbf{Abstract :}\\
-
-This document allows to easily write a first document using \LaTeX\\
-\textit{\textbf{Keywords :} \LaTeX, nice sheet.}
-
+\chapter{Conclusion}
 
 \end{document}
